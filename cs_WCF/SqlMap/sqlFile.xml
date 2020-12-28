@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="common" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+  <statements>
+
+    
+    <select id="SelectDeptList" parameterClass="System.Collections.Specialized.HybridDictionary" resultClass="Hashtable">
+					<![CDATA[
+					SELECT EQP_ID
+						, FILE_ID
+						, ICON_ID
+						, EQP_NM
+						, EQP_CONTENT
+						, EQP_WIDTH
+						, EQP_HEIGHT
+						, EQP_X
+						, EQP_Y
+						, EQP_VISIBLE
+						, EQP_ENABLE
+						, CRT_ID
+						, CRT_DT
+						, CHG_ID
+						, CHG_DT
+					FROM EQUIPMENT
+				 WHERE EQP_ID = #EQP_ID#
+				]]>
+    </select>
+    <select id="SelectDeptList2" parameterClass="System.Collections.Specialized.HybridDictionary" resultClass="Hashtable">
+      <![CDATA[
+					SELECT EQP_ID
+						, FILE_ID
+						, ICON_ID
+						, EQP_NM
+						, EQP_CONTENT
+						, EQP_WIDTH
+						, EQP_HEIGHT
+						, EQP_X
+						, EQP_Y
+						, EQP_VISIBLE
+						, EQP_ENABLE
+						, CRT_ID
+						, CRT_DT
+						, CHG_ID
+						, CHG_DT
+					FROM EQUIPMENT
+				 WHERE EQP_ID = #EQP_ID#
+				]]>
+    </select>
+  </statements>
+</sqlMap>
