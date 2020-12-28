@@ -3,7 +3,7 @@
   <statements>
 
     
-    <select id="SelectDeptList" parameterClass="System.Collections.Specialized.HybridDictionary" resultClass="Hashtable">
+    <select id="SelectDeptList" parameterClass="Hashtable" resultClass="Hashtable">
 					<![CDATA[
 					SELECT EQP_ID
 						, FILE_ID
