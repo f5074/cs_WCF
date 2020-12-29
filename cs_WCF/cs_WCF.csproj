@@ -80,9 +80,17 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="SqlMap\sqlFile.xml">
+    <Content Include="LocalDB\AutomationDB.ldf">
+      <DependentUpon>AutomationDB.mdf</DependentUpon>
+    </Content>
+    <Content Include="LocalDB\AutomationDB.mdf" />
+    <Content Include="Services\Automation\AutomationService.svc" />
+    <Content Include="Services\Automation\sqlFile.xml">
       <SubType>Designer</SubType>
-    </EmbeddedResource>
+    </Content>
+    <Content Include="Services\Common\sqlFile.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Services\Common\CommonService.svc" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -90,8 +98,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\ApiResponse.cs" />
-    <Compile Include="Config\Properties.cs" />
+    <Compile Include="Common\AutomationConnection.cs" />
+    <Compile Include="Common\DBConnection.cs" />
+    <Compile Include="Common\DefaultConnection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\Automation\AutomationDAO.cs" />
+    <Compile Include="Services\Automation\AutomationService.svc.cs">
+      <DependentUpon>AutomationService.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Services\Automation\IAutomationService.cs" />
     <Compile Include="Services\Common\CommonDAO.cs" />
     <Compile Include="Services\Common\CommonService.svc.cs">
       <DependentUpon>CommonService.svc</DependentUpon>
@@ -102,8 +117,9 @@
   <ItemGroup>
     <Content Include="Config\log4Net.config" />
     <Content Include="Config\providers.config" />
+    <EmbeddedResource Include="Config\SqlMap\AutomationSqlMap.config" />
     <None Include="packages.config" />
-    <Content Include="SqlMap.config" />
+    <EmbeddedResource Include="Config\SqlMap\SqlMap.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

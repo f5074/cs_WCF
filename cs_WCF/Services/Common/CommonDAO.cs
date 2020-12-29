@@ -1,14 +1,12 @@
 ﻿using cs_WCF.Common;
-using cs_WCF.Config;
 using IBatisNet.DataMapper;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Data;
 
 namespace cs_WCF.Services.Common {
     public class CommonDAO {
-        private static ISqlMapper mapper = Properties.EntityMapper;
+        private static ISqlMapper mapper = DBConnection.EntityMapper;
 
         /// <summary>
         /// SelectDeptList
@@ -17,7 +15,6 @@ namespace cs_WCF.Services.Common {
         /// <returns></returns>
         public static IList<Hashtable> SelectDeptList(Dictionary<string, object> parameters)
         {
-            Console.WriteLine("Service" + parameters["EQP_ID"]);
             return mapper.QueryForList<Hashtable>("SelectDeptList", parameters);
         }
 

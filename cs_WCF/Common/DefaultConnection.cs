@@ -1,13 +1,11 @@
-﻿using System;
-using IBatisNet.DataMapper;
-using IBatisNet.DataMapper.SessionStore;
-using IBatisNet.DataMapper.Configuration;
-using IBatisNet.Common.Utilities;
-using System.Xml;
-using System.Text.RegularExpressions;
+﻿using IBatisNet.DataMapper;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
 
-namespace cs_WCF.Config {
-    class Properties {
+namespace cs_WCF.Common {
+    public class DefaultConnection {
         public static ISqlMapper EntityMapper {
             get {
                 try
