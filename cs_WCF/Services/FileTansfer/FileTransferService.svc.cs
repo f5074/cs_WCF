@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
+using System.ServiceModel.Web;
 using System.Text;
 
 namespace cs_WCF.Services.FileTansfer
@@ -63,6 +64,39 @@ namespace cs_WCF.Services.FileTansfer
                 }
                 targetStream.Close();
                 sourceStream.Close();
+            }
+        }
+
+
+
+        public Stream DownloadFile(string fileName, string fileExtension)
+        {
+            string path = Path.GetFullPath(".\\Deploy");
+            string downloadFilePath = Path.Combine(path, fileName + "." + fileExtension);
+
+            //Write logic to create the file
+            //File.Create(downloadFilePath);
+
+            String headerInfo = "attachment; filename=" + fileName + "." + fileExtension;
+            WebOperationContext.Current.OutgoingResponse.Headers["Content-Disposition"] = headerInfo;
+            WebOperationContext.Current.OutgoingResponse.ContentType = "application/octet-stream";
+            return File.OpenRead(downloadFilePath);
+        }
+
+        public void UploadFile(string fileName, Stream stream)
+        {
+            string path = Path.GetFullPath(".\\Deploy");
+            string filePath = Path.Combine(path, fileName );
+            int length = 0;
+            using (FileStream writer = new FileStream(filePath, FileMode.Create))
+            {
+                int readCount;
+                var buffer = new byte[8192];
+                while ((readCount = stream.Read(buffer, 0, buffer.Length)) != 0)
+                {
+                    writer.Write(buffer, 0, readCount);
+                    length += readCount;
+                }
             }
         }
     }
